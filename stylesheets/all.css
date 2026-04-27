@@ -1,0 +1,141 @@
+body {
+  background: #d4d4d4 url("../images/gray_jean.png");
+  text-align: center;
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  padding-top: 5px;
+  font-size: 18px; }
+
+p {
+  line-height: 1.8; }
+
+.copyright {
+  color: #666;
+  font-size: 14px;
+  font-style: italic; }
+
+a {
+  color: #0088cc;
+  text-decoration: none; }
+  a:hover {
+    text-decoration: underline;
+    color: #005580; }
+
+a.nodec:hover {
+  text-decoration: none; }
+
+h1, h2, h3, h4 {
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  text-transform: uppercase; }
+
+h1:after, h2:after {
+  content: "";
+  display: block;
+  position: relative;
+  top: .33em;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.33); }
+
+h1.title:after {
+  content: "";
+  display: none;
+  border-bottom: none; }
+
+h2 {
+  font-size: 1.7em; }
+
+.smaller {
+  font-size: 0.8em; }
+
+.emph {
+  font-style: italic; }
+
+.preview {
+  padding-left: 1.75em;
+  color: #666666; }
+
+time {
+  font-style: italic;
+  color: #666666;
+  margin-bottom: 40px; }
+
+#me {
+  margin-bottom: 40px; }
+  #me img {
+    border-radius: 2000px;
+    width: 150px;
+    margin-bottom: 10px; }
+  #me a.social {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    border-radius: 2000px; }
+    #me a.social.twitter {
+      background: url("/images/twitter.png") top left no-repeat; }
+    #me a.social.linkedin {
+      background: url("/images/linkedin.png") top left no-repeat; }
+    #me a.social.github {
+      background: url("/images/github.png") top left no-repeat; }
+
+ul {
+  margin-left: 1.25em;
+  line-height: 1.8; }
+
+.hidden {
+  display: none; }
+
+#content {
+  background: #ffffff;
+  text-align: left;
+  padding: 15px 30px;
+  margin-bottom: 50px; }
+  #content .skills h2 {
+    font-size: 1.35em; }
+
+#content:after {
+  bottom: 100%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none; }
+
+#content:after {
+  border-color: rgba(255, 255, 255, 0);
+  border-bottom-color: #ffffff;
+  border-width: 30px;
+  left: 50%;
+  margin-left: -30px; }
+
+.btn-container {
+  width: 100%;
+  text-align: center; }
+
+.btn.topright {
+  float: right;
+  margin-top: 18px; }
+
+.white-popup-block {
+  background: #FFF;
+  padding: 20px 30px;
+  text-align: left;
+  max-width: 650px;
+  margin: 40px auto;
+  position: relative; }
+
+#contact-form-content label {
+  display: block;
+  margin: 1em 0 0.5em 0; }
+
+#contact-form-content input, #contact-form-content textarea {
+  width: 100%;
+  padding: 7px 4px;
+  border: 1px solid #aaa;
+  border-radius: 0.3em; }
+
+#contact-form-content textarea {
+  margin-bottom: 1em; }
+
+#contact-form-content input[type="submit"] {
+  background: transparent; }

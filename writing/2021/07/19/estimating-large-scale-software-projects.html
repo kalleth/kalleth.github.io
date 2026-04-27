@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Planning &amp; estimating large-scale software projects</title>
+<meta charset='UTF-8'>
+<meta content='width=device-width, initial-scale=1' name='viewport'>
+<link href="/stylesheets/normalize.css" rel="stylesheet" media="screen" /><link href="/stylesheets/foundation.css" rel="stylesheet" media="screen" /><link href="/stylesheets/all.css" rel="stylesheet" media="screen" /><link href="/stylesheets/btns.css" rel="stylesheet" media="screen" /><link href="/stylesheets/magnific.css" rel="stylesheet" media="screen" />
+<link href="//fonts.googleapis.com/css?family=Lato:300,400" rel="stylesheet" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/zepto/1.1.4/zepto.min.js"></script>
+<script src="/javascripts/all.js"></script>
+</head>
+<body>
+<div class='row'>
+<div class='small-12 small-centered columns' id='me'>
+<a class='nodec' href='/'>
+<h1 class='title'>Tom Russell</h1>
+<img src="//www.gravatar.com/avatar/e51ec98444c17f2d38c534ca44075c79.jpg?s=256" alt="" />
+</a>
+<br>
+<a class='social github' href='https://github.com/kalleth' target='_blank'></a>
+<a class='social twitter' href='https://twitter.com/khalleth' target='_blank'></a>
+<a class='social linkedin' href='http://www.linkedin.com/in/tomrusselldev' target='_blank'></a>
+</div>
+</div>
+<div class='row'>
+<div class='small-12 small-centered large-10 columns' id='content'>
+<h1>Planning &amp; estimating large-scale software projects</h1>
+<p>
+<time>July 19, 2021</time>
+</p>
+<p>This weekend I was talking with a friend about how I&#39;d planned and estimated a
+<em>huge</em> software project in one of my previous jobs. By that I mean not something
+which can be done by a single team in a sprint or two, but something which
+requires several teams, across several quarters of effort, involving many other
+departments of non-engineering team members.</p>
+
+<p>Sensitive commercial details and company names, obviously, aren&#39;t real - to
+protect the <del>guilty</del> <sup>(wait, that&#39;s me!)</sup> innocent! 😂</p>
+
+<p>This will be a long post, because we&#39;re dealing with projects that can cost
+eight figures in staff salaries, easy. And make or break entire companies. No
+apologies made.</p>
+
+<h2>Foreword: But Tom, #NoEstimates!</h2>
+
+<p>Let&#39;s get this out of the way first: Estimates are one of the hardest parts of
+software development. They&#39;re never fully correct - in fact, most of the time
+they&#39;re no more correct than well-informed <em>guesses</em> - and that&#39;s hard to accept
+as an engineer used to working with certainties.</p>
+
+<p>That said, I have yet to work in a company where they&#39;re not a necessary evil.
+Engineering does not work in a vacuum, and there are commercial contracts that
+will be signed, at a high level, without your involvement. Deals that will have
+been agreed before you joined the organization. &quot;Tie-ins&quot; with other companies
+that have specific launch dates. Marketing and finance departments that want to
+know when they&#39;ll need to spend £xm on producing a Christmas ad campaign.</p>
+
+<p>Entire teams of people, who aren&#39;t software engineers, and are used to being
+held accountable for delivery dates in <em>their</em> fields, will expect you to be
+able to tell them when your part of a project is likely to be done.</p>
+
+<p>There&#39;s plenty of information about how to estimate <em>velocity</em> out there for a
+single team - whether that be through planning poker, story points, or backlog
+story tracking without estimates at all, but none of those work across huge
+projects involving multiple teams and departments.</p>
+
+<p>If you&#39;re in leadership -- maybe you&#39;re an architect, or an engineering manager
+-- you <em>will</em> be expected to produce estimates for major projects, and you
+<em>should</em> expect to be held accountable if your estimates are too far off the
+mark because you failed to do your due diligence when coming up with them.</p>
+
+<h2>Step 0: Information Gathering</h2>
+
+<p>You&#39;ll need some idea of what you need to build. In some cases - like where what
+you&#39;re building is the result of a contract between large companies - this might
+be contained in <em>reams</em> of contract paperwork, presentations, and appendices.</p>
+
+<p>You might be lucky enough to have business analysts working with you (or reading
+the contract, or working with clients!), or user researchers working with your
+users, or a Head of Product with deep subject-matter expertise, who can tell you
+roughly what needs building.</p>
+
+<p>If you&#39;re <em>doubly</em> lucky, they&#39;ll have written it down somewhere you can access.</p>
+
+<p>If you&#39;re unlucky, you&#39;ll need to spend a long time talking to them, and then
+write it down yourself. But it <em>must be written down</em>. At this stage, don&#39;t
+worry about format; I&#39;ve had 200-page long Google docs, 10,000 line long
+spreadsheets, 1.5Gb powerpoints and entire <em>books</em> of user stories. You&#39;ll
+organize it later.</p>
+
+<p>Now you have to read it. <strong><em>All of it.</em></strong></p>
+
+<p>You <em>have</em> to understand what you&#39;re being asked to build, or you&#39;ll be working
+blind, and everything you do after this will be <em>bullshit</em>.  Ask questions as
+you go, to make sure you understand what you&#39;re being asked to build.</p>
+
+<p>And keep the people who got this information for you close, and happy; you&#39;ll
+need them alongside you, checking your work (and the development teams work!)
+every step of the way.</p>
+
+<p><strong>The first rule of estimating complex projects: You must <em>understand</em> what you
+are being asked to build</strong>.</p>
+
+<h2>Step 1: The Breakdown</h2>
+
+<p>Now you understand what you&#39;re being asked to plan out, here&#39;s where you start
+to earn your pay as a technology leader.</p>
+
+<p>The information that you read, and understood, before, now needs grouping
+together into coherent &quot;boxes&quot;. The best tool I&#39;ve found for this is a physical
+index card - but there are digital alternatives, too.</p>
+
+<center>![](/images/writing/index-card.png)</center>
+
+<p><sub><em>An actual index card - redacted - that I wrote while breaking down a
+recent project. Top-left is the &quot;code&quot; that can be used in planning software to
+refer to this task, when allocating it to a team. Top center is a reference to
+the original spreadsheet containing the underlying requirements, and top right
+is a colour coding that indicates that this feature is required for the MVP
+we were targeting.</em></sub></p>
+
+<p>I&#39;m going to use the example of an e-commerce marketplace, here and in the next
+few steps. Let&#39;s say you&#39;ve got these bullet points in a contract or spreadsheet
+somewhere, from the previous step:</p>
+
+<ul>
+<li>A user can add a product to their shopping cart</li>
+<li>A user can see what&#39;s in their shopping cart</li>
+<li>A user can update the quantity of items in their cart</li>
+<li>A user can remove items from their cart</li>
+<li>Discounts are applied if the products in their shopping cart are part of a
+promotion</li>
+<li>A user can see their order total price</li>
+<li>An estimated delivery date is shown for the products in their cart</li>
+<li>An estimate of shipping costs is shown for the products in their cart.</li>
+</ul>
+
+<p>An efficient agile practitioner should be asking some questions here. She&#39;ll be
+asking &quot;Do we absolutely <strong>need</strong> discount functionality at launch?&quot;, for
+example; at every opportunity you should be trying to drop scope as much as
+possible. In general, these kind of large-scale software projects are based on
+contract needs, or product launches - so you should try and descope as much as
+possible at every stage, to make sure you&#39;re only building the true MVP.</p>
+
+<p>But let&#39;s say you get the highly unhelpful answer of &quot;We&#39;ve agreed in the
+contract to build all of this&quot; <sup>(this happens way more than I&#39;d like)</sup>
+. Okay. <em>Assuming</em> that all of these are required before launch, you might group
+these together and write the following index cards:</p>
+
+<ul>
+<li>Product detail page</li>
+<li>Shopping cart containing products</li>
+<li>Shopping cart price calculation</li>
+<li>Discount/promotions engine</li>
+<li>Cart shipping estimation</li>
+</ul>
+
+<p>Hopefully, you can see how your engineering skills are starting to come into
+play; does it make sense to split the requirements in this way?</p>
+
+<p>Will engineering teams, given each of these boxes, be able to build them as a
+distinct &quot;thing&quot;, with a celebration when they&#39;re &quot;done&quot;, in a way that each
+builds a shippable feature, that can be evaluated in isolation?</p>
+
+<p>Are there cross-cutting concerns you&#39;ll have to build in two or more of these
+steps that might make more sense to split out as an earlier requirement?</p>
+
+<p>A skilled technologist will use her experience here to try and avoid
+dependencies at this early stage, and push back on &quot;kitchen sink&quot; requirements,
+too, pointing out even at this early stage pitfalls that the company would do
+well to avoid by reducing scope or opening a dialogue with the client.</p>
+
+<p>Great. Now you&#39;ve got a stack of index cards, which grouped together cover all
+of the needs in your original, unstructured requirements. And they&#39;re also in a
+format which you&#39;re comfortable can be parceled out to engineering teams as
+needed!</p>
+
+<p>Link them to the underlying requirements. Write them on the back of the index
+card, or reference the document you got the requirements from in the first place
+if there&#39;s too many.</p>
+
+<p><sub><em>aside: Essentially, what you&#39;re doing here is producing a <a href="https://en.wikipedia.org/wiki/Work_breakdown_structure">Work Breakdown
+Structure</a>, a project
+management and systems engineering tool.</em><sub></p>
+
+<h2>Step 2: Dependencies</h2>
+
+<p>Assuming, at this step, you&#39;ve pushed back to make sure you&#39;re only left with
+things you absolutely have to build, now we&#39;ve got to decide what order to do
+them in.</p>
+
+<p>Which tasks depend on which other tasks?</p>
+
+<p>Again, this is where your skill as an engineer, and your experience at doing
+work of this type will come in very useful. Will you need to build an
+integration with a payment provider before you can build your checkout
+experience?</p>
+
+<p>Maybe, but not necessarily. You could build &quot;everything-but&quot; and avoid a
+dependency, having the payment step be a simple button on the page which
+&quot;bypasses&quot; it for now - but does that run the risk of having to go back and
+rework more than just that button when you eventually <em>do</em> integrate a payment
+provider?</p>
+
+<p>Remember, you&#39;ve already pushed back on as much as you can to make sure you&#39;re
+<em>only</em> building an MVP; if you&#39;ve <em>got</em> to integrate a payment provider before
+launch, when is the <em>most efficient and least risky</em> time to do it? Is it worth
+taking on additional risk to avoid a dependency? Maybe it is - maybe it isn&#39;t -
+but make a note of the possibility anyway, whatever you decide. It could save
+your backside later.</p>
+
+<p>I commandeered an entire conference room for several weeks at this stage. Or at
+least, the entire wall of one, painted it with whiteboard paint and stuck my
+index cards to the wall with blu-tac. Remember - this project is going to cost
+millions, and so you can justify taking over some space.</p>
+
+<p>Let&#39;s go back to our example of the e-commerce marketplace, above, with a couple
+of added items -- and see what that looks like as a dependency chart:</p>
+
+<p><img src="/images/writing/dependency-chart.png" alt="" /></p>
+
+<p>You&#39;ll note I&#39;ve written down why some of the dependencies exist - that&#39;s
+because soon we&#39;re going to involve the engineering teams, who we want to
+challenge our assumptions - so we need to remember what assumptions we&#39;ve made!</p>
+
+<p>Realistically, you should do this for every dependency. It&#39;ll help you figure
+out how to drop scope later on in the project to avoid dependencies in future.</p>
+
+<h2>Step 3: Estimation</h2>
+
+<p><strong>The second rule of estimating complex projects: You must <em>always</em> involve
+those who will actually do the work</strong>.</p>
+
+<p>This is where you bring in your tech leads, principal engineers and the like.
+They know their teams, they&#39;re aware of what they&#39;re capable of, and they&#39;re
+familiar - more than you are - with the systems already in operation that the
+features you&#39;re proposing will touch.</p>
+
+<p>Give them an introduction to the project, then walk them through your digital
+board - or physical wall - explaining the very top-level - what&#39;s written on the
+front of the card, not the requirements underlying it - as you go.</p>
+
+<p>As a group, identify which team has the subject-matter expertise or best prior
+experience for each of the cards on your wall.</p>
+
+<p>Now ask each team lead to go through their cards, referencing the source
+material, and assign an estimate in weeks for an entire team. Don&#39;t go more
+granular than 1 team-week, and you can use doubling scales - 1 week, 3 weeks, 6
+weeks, 12 weeks - too. Too many 12-week estimates -- or whatever you settle on
+as your maximum -- can imply too much uncertainty, so put a marker on those, and
+explore them in more detail later on.</p>
+
+<p><sub><em>aside: Civil engineering uses a series of <a href="https://www.routledge.com/Spons-Mechanical-and-Electrical-Services-Price-Book-2022/AECOM/p/book/9781032052267">price
+books</a>,
+here in the UK, which &quot;ground&quot; estimations for massive civil engineering
+projects, based on what has been done before. Software engineering is too young
+a discipline to have this kind of depth and rigor, which is a shame.</em></sub></p>
+
+<p><strong>Timebox this</strong>. Each card should take 5-10 minutes, maximum, for them to put a
+weeks-number on, or your teams risk getting lost in the detail. You want to
+strike a balance between giving a team enough time to understand the rough
+requirements, vs solutionising and &quot;going deep&quot; into the need, at this stage.</p>
+
+<p>Ensure the teams know that <strong>you</strong> take the responsibility, not them, for their
+estimates, and promise them you&#39;ll make sure they&#39;re taken as estimates, not
+cast-iron guarantees - and then follow through on that in your conversations
+with management. You <strong>have</strong> to trust your teams -- if you don&#39;t give them
+psychological safety, they&#39;ll dramatically overestimate to protect themselves.</p>
+
+<p>You don&#39;t get that psychological safety; unfortunately, such is life at the top.</p>
+
+<p>Your head is <a href="https://www.collinsdictionary.com/dictionary/english/put-ones-head-above-the-parapet-keep-ones-head-below-the-parapet">firmly above the
+parapet</a>,
+here, and theirs isn&#39;t -- which is as it should be. And for that reason, your
+skill as a technologist is needed here, too; to challenge estimates that
+surprise you, and write down why. </p>
+
+<p>I strongly, strongly suggest you don&#39;t use this as an opportunity to challenge
+your teams to <em>reduce</em> their estimates, at least not in this group setting.
+Again; trust your team leads and senior engineers -- they know more than you
+about what will be involved in <em>actually doing this work</em>.</p>
+
+<p>But a <em>good</em> technologist will be able to identify areas where teams are being
+over-cautious, or misunderstanding the requirements, <em>or know something she
+doesn&#39;t</em>, and she&#39;ll explore those later in 1-on-1 conversations.</p>
+
+<p>A <em>great</em> technologist will use this opportunity to check her assumptions on
+dependencies, too; she&#39;ll explore them with her senior engineers and alter the
+dependency chart based on those conversations.</p>
+
+<h2>Step 4: Analysis</h2>
+
+<p>Wonderful. We&#39;ve got a dependency chart - which can double as a project plan --
+we know what team is likely to do each piece of work, and we&#39;ve got an estimate,
+in weeks, for each item on it.</p>
+
+<p>Manna from heaven for a project manager, and if you&#39;ve got a good one available,
+they&#39;ll love being asked for help from here on.</p>
+
+<p>What I did next is apply something basic which I learnt at university; critical
+path analysis on a <a href="https://en.wikipedia.org/wiki/Program_evaluation_and_review_technique">PERT
+chart</a>
+network diagram.</p>
+
+<p>This is not new -- it comes from 1958, leads to the dreaded Gantt chart, <em>and
+has been widely criticized as something to be avoided for software projects</em>.
+But I&#39;ve still found it helpful to go from &quot;I have no idea how long this will
+take&quot; to an initial timeframe, and provide an indication of whether the company
+is &quot;staffed-up&quot; to perform the project at all.</p>
+
+<p>Again, let&#39;s take our fictional e-commerce marketplace example, and see what
+that looks like on an <em>activity on node</em> critical path network diagram:</p>
+
+<p><img src="/images/writing/cpa-network-diag-1.png" alt="" /></p>
+
+<p>Here, we&#39;ve added our estimates to each of the tasks, based on the number of
+weeks each task will take a team to accomplish. We&#39;ve added our dependency
+lines, and we&#39;ve added &quot;start&quot; and &quot;finish&quot; boxes.</p>
+
+<p>Now we need to fill out the rest, using a <em>forward pass</em>, and then a <em>backwards
+pass</em>. The activities (tasks) with a zero in the bottom centre column - our
+&#39;slack&#39; - indicate the critical path. Explaining how to do this is a blog post
+in and of itself, but <a href="https://tiemchart.com/blogs/training/forward-pass-and-backward-pass/">you can find good explanations on google, like this one</a>.</p>
+
+<p><img src="/images/writing/cpa-network-diag-2.png" alt="" /></p>
+
+<p>Now, we&#39;ve got our <em>critical path</em>, in red (those with &#39;zero&#39; slack/float), and
+our <em>smallest possible time</em> this project could be completed in - 22 weeks (the
+earliest finish of the &quot;Finish&quot; box). In essence, it gives us a <strong>No Earlier
+Than</strong> or <strong>NET</strong> date for the entire project.</p>
+
+<p>It also tells us how many <strong>team-weeks</strong> this fictional, idealised project would
+require -- i.e how long it would take a single team, working continuously, to
+complete -- by adding all the estimates together. 43 team-weeks.</p>
+
+<p>There are <em>whole books</em> in project management written about other insights you
+can glean - and pitfalls to avoid - when using a diagram like this, but that&#39;s
+for another time.</p>
+
+<h2>Step 5: Review &amp; Inform</h2>
+
+<p>We&#39;ve gone from Zero to Something, and we&#39;ve done a reasonable amount of due
+diligence on getting this &quot;Something&quot;. That&#39;s great, and more, unfortunately,
+than most large-scale software projects seem to get.</p>
+
+<p>But there&#39;s an important caveat to realise;</p>
+
+<ul>
+<li>The no-earlier-than date <strong>assumes you have an infinite number of teams</strong>. </li>
+</ul>
+
+<p>We haven&#39;t done any Gantt-style allocation across our already existing teams yet
+-- and I wouldn&#39;t bother (the CEO can hire in a project manager to do that if
+she so chooses), so the &quot;no earlier than&quot; date is truly the earliest possible
+date the project can be completed - it could easily be two or three times as
+long.</p>
+
+<p>But you&#39;ve also got the <strong>total team-weeks</strong> the project will take.</p>
+
+<p>Now, you&#39;re at a crossroads. You&#39;ve got three possible outcomes of your
+no-earlier-than date:</p>
+
+<ul>
+<li>Easy case: Your NET date is well before your deadline.</li>
+<li>Harder case: Your NET date is well after your deadline...perhaps
+significantly.</li>
+<li>Frustratingly common, impossible case: Your NET date is close to your
+deadline, either just before or just after, or your &quot;total team-weeks&quot; is
+close to 100% of what&#39;s available.</li>
+</ul>
+
+<p>In the easy case, you just need to make sure your <em>total team-weeks</em> is around
+50% of your current staffing level, and you <em>should</em> be comfortable having a
+pretty easy conversation with your CEO. If it&#39;s not, you can have a conversation
+about hiring, taking into account the significant overhead and time-lag in
+onboarding new team members, and the diminishing returns inherent in growing
+your team.</p>
+
+<p>In the harder case, you&#39;re way, way over even in the earliest, most fictional
+version of your estimation, and you have to have a difficult conversation with
+your CEO -- and probably your sales director -- where you&#39;ll have to talk
+cutting scope, extending the deadline, or disappointing the client.</p>
+
+<p>And crucially, you&#39;re doing it with <em>actual data at your fingertips</em> and <em>actual
+due diligence having been performed</em>. You&#39;re not &quot;gut feeling&quot; it. You&#39;re not
+&quot;whining about deadlines like every other engineer&quot;. You&#39;re talking cold, hard
+facts, and hopefully you&#39;re doing this <em>well in advance</em> of the project
+deadline, so there&#39;s still time to make changes.</p>
+
+<p>But in the impossible case... We&#39;ve managed to box ourselves into a corner,
+because now it <em>looks</em> to anyone seeing the figures like we can do this, and
+you&#39;re going to have to balance on the head of a pin in order to avoid being
+forced into an impossible situation.</p>
+
+<p>My advice;</p>
+
+<ul>
+<li>Double-check all of your estimates with your teams.  As estimates are, by
+nature, imperfect and usually lower than reality, you will likely discover
+things you didn&#39;t consider that push the estimate up, and now you&#39;re in the
+harder-but-not-impossible case I described above.
+
+<ul>
+<li>This is not cheating -- if you&#39;re that tight on a <em>perfect</em>, <a href="https://en.wikipedia.org/wiki/Spherical_cow">spherical cow
+in a vacuum</a> estimate, then
+you <em>need</em> to recheck your assumptions.</li>
+<li>Now is the time to <em>go deeper</em> on your estimation, in conversation with
+your team members, spending more than that initial 5-10 minutes on each
+task.</li>
+</ul></li>
+<li>Look again at the risks you can take to avoid dependencies.</li>
+<li>Consider any changes you can make to the underlying project structure.
+
+<ul>
+<li>I once offered - as a &quot;nuclear option&quot; - forking a project so a set of
+client requirements could be implemented without migrating the existing
+data. It took - as explained at the start, as a consequence of this option -
+6 months to re-integrate the changes at the conclusion of the project,
+but it was the right commercial decision to make.</li>
+<li>Can you accept any considered, appropriate technical debt to speed things
+up, while providing context on when that debt will need to be addressed,
+and how much addressing it will cost?</li>
+</ul></li>
+<li>Consider if any of your tasks can be undertaken by consultants or bought
+&quot;off-the-shelf&quot;, but be wary of the overhead involved.</li>
+<li>Truly consider other, ongoing work to decide if your &quot;total team-weeks&quot; vs
+&quot;available team weeks&quot; is feasible - will your teams <em>really</em> get 50% of
+their time to work on this project?</li>
+<li>Challenge scope at a lower level - with the subject matter experts and
+original requirements authors - to see if certain parts can be dropped or
+pushed later.</li>
+</ul>
+
+<h2>Step 6: Kick things off</h2>
+
+<p>Without noticing, you&#39;ve also developed a project plan, that means engineering
+teams can now be given tasks to explore, flesh out, and <em>build</em>. That means your
+teams can start building on zero-dependency items <em>now</em>, and you&#39;re that much
+more confident they won&#39;t run into blockers.</p>
+
+<p>A skilled technologist can also use this to explain and explore the full
+requirements with her teams, making sure they feel informed, trusted, aware of
+the entire plan, and encouraged to speak up about things they&#39;re working on that
+will have an impact down the line. Her teams will feel like they are pulling
+together towards a larger set of goals, and will see how the work they are doing
+relates to the work everyone else is doing.</p>
+
+<p>This is invaluable to team cohesion, and maintaining a positive, focused and
+effective working environment.</p>
+
+<h2>A few words on staying Agile™</h2>
+
+<p>I strongly believe that an approach like this <strong>is not</strong> contrary to agile
+methods. <sup>Note I say &quot;agile&quot; with a lowercase &#39;a&#39; -- an Agile™, SCRUM, SaFER
+or XP practitioner may not enjoy themselves in an environment like this.</sup></p>
+
+<p>If you&#39;ve got a SaaS platform, which is already launched, and you have a &quot;grab
+bag&quot; of features that <em>could</em> be worked on, even if there is no ominous, looming
+deadline, having a dependency chart of those features will help with
+prioritising what has the most value to the company. The same feature, if we
+know we can work on it immediately, will have more value than if we know we
+can&#39;t work on it for 6 months because we don&#39;t have a payment system.</p>
+
+<p><sup><em>aside: This is similar to the accounting concept of &quot;<a href="https://en.wikipedia.org/wiki/Time_value_of_money">the time value of
+money</a>&quot;, a conjecture in
+financial accounting which says &quot;there is greater benefit to receiving a sum of
+money now rather than an identical sum later&quot;. Working out the &quot;<a href="https://en.wikipedia.org/wiki/Net_present_value">net present
+value</a>&quot; of a feature is an
+exercise best left to a product owner</em> 😉</sup></p>
+
+<p>What we&#39;ve produced here is simply a <em>roadmap</em> which product <em>and</em> engineering
+teams can use to prioritise what&#39;s next. Sometimes, you&#39;ll find it&#39;ll have no
+dependencies; great, now you can prioritise based on pure user value, without
+any engineering concerns!</p>
+
+<p>Continue to deploy early, deploy often, and demo -- even if it&#39;s only to a
+staging/test environment. This will keep your subject matter experts &amp; your
+users in the loop, able to integrate feedback on that working software quickly
+and move on when &quot;good enough&quot; is reached.</p>
+
+<p>Don&#39;t fuss about detailing every requirement up front; get your engineering
+teams as close to the client/user/original source of requirements as possible,
+give them a few words on an index card, and urge them to demo often; trust your
+engineering teams to figure out exact user stories, acceptance tests, and the
+like.</p>
+
+<p><strong>Revisit your project plan in light of developments</strong>; update and refine it
+based on things you learn (and reconsider dependencies and scope!) regularly.
+Compare actual time taken to the original estimates you received. Re-estimate in
+light of that, as needed.</p>
+
+<p>Do not follow The Plan™ as a hard and fast, unbreaking rule of what must be
+done, but instead recognise that the core tenets of agile software development
+-- that requirements change all the time, as we learn more by building and
+releasing software -- mean the plan is <em>always</em> flexible and <em>always</em> changing.</p>
+
+<p>And now, all of this being said, do remember that this is <em>one approach</em>, and
+there <em>is no</em> one-size-fits-all strategy for engineering leadership. Your
+situation might be very different, and not require <em>any</em> of this work. As
+always, match the tools and approaches you use to your reality!</p>
+
+<p>And that&#39;s how I&#39;ve estimated large, complex software projects.</p>
+
+<h3>Thanks to...</h3>
+
+<p>Thanks go to <a href="https://twitter.com/robyurkowski">Rob Yurkowski</a>, <a href="https://twitter.com/SullyOfNone">Dave
+Sullivan</a>, sevenseacat, Hanna, Dom and my
+father (also, confusingly, named Tom Russell, an accomplished PM in the
+Civil Engineering sector) for reviewing drafts of this post.</p>
+
+</div>
+</div>
+<div class='row'>
+<div class='small-12 small-centered'>
+<p class='copyright'>&copy; Tom Russell 2026. All rights reserved.</p>
+</div>
+</div>
+</body>
+</html>
