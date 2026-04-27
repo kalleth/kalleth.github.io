@@ -1,32 +1,63 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <title>Planning & estimating large-scale software projects</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="/stylesheets/normalize.css" rel="stylesheet" media="screen" /><link href="/stylesheets/foundation.css" rel="stylesheet" media="screen" /><link href="/stylesheets/all.css" rel="stylesheet" media="screen" /><link href="/stylesheets/btns.css" rel="stylesheet" media="screen" /><link href="/stylesheets/magnific.css" rel="stylesheet" media="screen" />
-    <link href="//fonts.googleapis.com/css?family=Lato:300,400" rel="stylesheet" />
-    <script src="//cdnjs.cloudflare.com/ajax/libs/zepto/1.1.4/zepto.min.js"></script>
-    <script src="/javascripts/all.js"></script>
+    <meta name="color-scheme" content="light dark">
+    <link rel="icon" type="image/png" href="/images/favicon.png">
+    <link rel="apple-touch-icon" href="/images/favicon.png">
+    <script>
+      (function(){var t=localStorage.getItem('theme');if(t==='dark'||(!t&&matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.classList.add('dark')})()
+    </script>
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            typography: {
+              DEFAULT: { css: { a: { color: '#2563eb', textDecoration: 'none', fontWeight: 'inherit', '&:hover': { color: '#1d4ed8', textDecoration: 'underline' } } } },
+              invert:   { css: { a: { color: '#60a5fa',                                                '&:hover': { color: '#93c5fd' } } } }
+            }
+          }
+        }
+      }
+      function toggleTheme() {
+        var d = document.documentElement.classList.toggle('dark')
+        localStorage.setItem('theme', d ? 'dark' : 'light')
+      }
+    </script>
+    <style>
+      body { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E") }
+    </style>
   </head>
-  <body>
-    <div class="row">
-      <div class="small-12 small-centered columns" id="me">
-        <a class="nodec" href="/">
-          <h1 class="title">Tom Russell</h1>
-          <img src="//www.gravatar.com/avatar/e51ec98444c17f2d38c534ca44075c79.jpg?s=256" alt="" />
-        </a>
-        <br>
-        <a class="social github" href="https://github.com/kalleth" target="_blank"></a>
-        <a class="social twitter" href="https://twitter.com/khalleth" target="_blank"></a>
-        <a class="social linkedin" href="http://www.linkedin.com/in/tomrusselldev" target="_blank"></a>
-      </div>
-    </div>
-    <div class="row">
-      <div class="small-12 small-centered large-10 columns" id="content">
-        <h1>Planning & estimating large-scale software projects</h1>
-        <p><time>July 19, 2021</time></p>
-        <p>This weekend I was talking with a friend about how I&#39;d planned and estimated a
+  <body class="bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 min-h-screen">
+    <div class="max-w-2xl mx-auto px-6 py-16">
+        <div class="flex items-center justify-between mb-10">
+    <a href="/" class="inline-flex items-center gap-3 text-sm text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">
+      <img src="//www.gravatar.com/avatar/e51ec98444c17f2d38c534ca44075c79.jpg?s=256" alt="Tom Russell" class="w-8 h-8 rounded-full" />
+      <span>Tom Russell</span>
+    </a>
+    <button onclick="toggleTheme()" aria-label="Toggle colour scheme"
+            class="p-1.5 text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors rounded-md">
+      <svg class="w-[18px] h-[18px] hidden dark:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="4"/>
+        <path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
+      </svg>
+      <svg class="w-[18px] h-[18px] block dark:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
+      </svg>
+    </button>
+  </div>
+
+      <article>
+        <header class="mb-8">
+          <h1 class="text-2xl font-semibold tracking-tight mb-2">Planning & estimating large-scale software projects</h1>
+          <time class="text-sm text-zinc-500 dark:text-zinc-400">July 19, 2021</time>
+        </header>
+        <div class="prose prose-zinc dark:prose-invert max-w-none">
+          <p>This weekend I was talking with a friend about how I&#39;d planned and estimated a
 <em>huge</em> software project in one of my previous jobs. By that I mean not something
 which can be done by a single team in a sprint or two, but something which
 requires several teams, across several quarters of effort, involving many other
@@ -108,9 +139,7 @@ to earn your pay as a technology leader.</p>
 together into coherent &quot;boxes&quot;. The best tool I&#39;ve found for this is a physical
 index card - but there are digital alternatives, too.</p>
 
-<p style="text-align:center;">
-  ![](/images/writing/index-card.png)
-</p>
+<p><img src="/images/writing/index-card.png" alt="" /></p>
 
 <p><sub><em>An actual index card - redacted - that I wrote while breaking down a
 recent project. Top-left is the &quot;code&quot; that can be used in planning software to
@@ -508,12 +537,13 @@ Sullivan</a>, sevenseacat, Hanna, Dom and my
 father (also, confusingly, named Tom Russell, an accomplished PM in the
 Civil Engineering sector) for reviewing drafts of this post.</p>
 
-      </div>
-    </div>
-    <div class="row">
-      <div class="small-12 small-centered">
-        <p class="copyright">&copy; Tom Russell 2026. All rights reserved.</p>
-      </div>
+        </div>
+      </article>
+      <footer class="mt-12 pt-8 border-t border-zinc-200 dark:border-zinc-800 flex items-center justify-between">
+    <a href="/" class="text-sm text-zinc-500 hover:text-zinc-900 dark:hover:text-white transition-colors">&larr; Back home</a>
+  <span class="text-xs text-zinc-400 dark:text-zinc-500">&copy; 2026 Tom Russell</span>
+</footer>
+
     </div>
   </body>
 </html>

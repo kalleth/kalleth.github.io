@@ -1,66 +1,116 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>Tom Russell - Senior Technologist, Architect, Technical leader of teams</title>
+    <title>Tom Russell</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="/stylesheets/normalize.css" rel="stylesheet" media="screen" /><link href="/stylesheets/foundation.css" rel="stylesheet" media="screen" /><link href="/stylesheets/all.css" rel="stylesheet" media="screen" /><link href="/stylesheets/btns.css" rel="stylesheet" media="screen" /><link href="/stylesheets/magnific.css" rel="stylesheet" media="screen" />
-    <link href="//fonts.googleapis.com/css?family=Lato:300,400" rel="stylesheet" />
-    <script src="//cdnjs.cloudflare.com/ajax/libs/zepto/1.1.4/zepto.min.js"></script>
-    <script src="/javascripts/all.js"></script>
+    <meta name="color-scheme" content="light dark">
+    <link rel="icon" type="image/png" href="/images/favicon.png">
+    <link rel="apple-touch-icon" href="/images/favicon.png">
+    <script>
+      (function(){var t=localStorage.getItem('theme');if(t==='dark'||(!t&&matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.classList.add('dark')})()
+    </script>
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            typography: {
+              DEFAULT: { css: { a: { color: '#2563eb', textDecoration: 'none', fontWeight: 'inherit', '&:hover': { color: '#1d4ed8', textDecoration: 'underline' } } } },
+              invert:   { css: { a: { color: '#60a5fa',                                                '&:hover': { color: '#93c5fd' } } } }
+            }
+          }
+        }
+      }
+      function toggleTheme() {
+        var d = document.documentElement.classList.toggle('dark')
+        localStorage.setItem('theme', d ? 'dark' : 'light')
+      }
+    </script>
+    <style>
+      body { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E") }
+    </style>
   </head>
-  <body>
-    <div class="row">
-      <div class="small-12 small-centered columns" id="me">
-        <h1 class="title">Tom Russell</h1>
-        <img src="//www.gravatar.com/avatar/e51ec98444c17f2d38c534ca44075c79.jpg?s=256" alt="" />
-        <br>
-        <a class="social github" href="https://github.com/kalleth" target="_blank"></a>
-        <a class="social twitter" href="https://twitter.com/khalleth" target="_blank"></a>
-        <a class="social linkedin" href="http://www.linkedin.com/in/tomrusselldev" target="_blank"></a>
-      </div>
+  <body class="bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 min-h-screen">
+    <div class="max-w-2xl mx-auto px-6 py-16">
+        <div class="relative text-center mb-16">
+    <div class="absolute top-0 right-0">
+      <button onclick="toggleTheme()" aria-label="Toggle colour scheme"
+              class="p-1.5 text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors rounded-md">
+        <svg class="w-[18px] h-[18px] hidden dark:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="4"/>
+          <path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
+        </svg>
+        <svg class="w-[18px] h-[18px] block dark:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
+        </svg>
+      </button>
     </div>
-    <div class="row">
-      <div class="large-10 small-12 large-centered columns" id="content">
-         <h1><a class="anchor" href="#i-deliver" id="i-deliver" name=
-    "i-deliver"></a>I DELIVER</h1>
+    <img src="//www.gravatar.com/avatar/e51ec98444c17f2d38c534ca44075c79.jpg?s=256" alt="Tom Russell" class="w-24 h-24 rounded-full mx-auto mb-5" />
+    <h1 class="text-xl font-semibold mb-1">Tom Russell</h1>
+    <p class="text-sm text-zinc-500 dark:text-zinc-400 mb-5">CTO &middot; Engineering Leader &middot; South-East UK</p>
+    <div class="flex justify-center gap-4">
+      <a href="https://github.com/kalleth" target="_blank" rel="noopener noreferrer" aria-label="GitHub"
+         class="text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+        </svg>
+      </a>
+      <a href="https://bsky.app/profile/kalleth.bsky.social" target="_blank" rel="noopener noreferrer" aria-label="Bluesky"
+         class="text-zinc-400 hover:text-sky-500 dark:hover:text-sky-400 transition-colors">
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M5.202 2.857C7.954 4.922 10.913 9.11 12 11.358c1.087-2.247 4.046-6.436 6.798-8.501C20.783 1.366 24 .213 24 3.883c0 .732-.42 6.156-.667 7.037-.856 3.061-3.978 3.842-6.755 3.37 4.854.826 6.089 3.562 3.422 6.299-5.065 5.196-7.28-1.304-7.847-2.97-.104-.305-.152-.448-.153-.327 0-.121-.05.022-.153.327-.568 1.666-2.782 8.166-7.847 2.97-2.667-2.737-1.432-5.473 3.422-6.3-2.777.473-5.899-.308-6.755-3.369C.42 10.04 0 4.615 0 3.883c0-3.67 3.217-2.517 5.202-1.026"/>
+        </svg>
+      </a>
+      <a href="https://www.linkedin.com/in/tomrusselldev" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"
+         class="text-zinc-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+
+      <main class="prose prose-zinc dark:prose-invert max-w-none">
+        <h2>I deliver</h2>
 
 <p>Not parcels. Software.</p>
 
-<p>I'm an engineering leader based in the south-east of the UK who delivers high-quality
-software projects, predominantly using Ruby on Rails, Golang and JavaScript.</p>
+<p>I'm an engineering leader based in the south-east of the UK who delivers high-quality software projects, predominantly using Ruby on Rails, Golang and JavaScript.</p>
 
-<p>I've led teams, both large and small. I've built software
-for systems that handle a few hundred up to millions of hits each day, and manage hundreds of millions of pounds. But most of all, I've delivered working software to real people.</p>
+<p>I've led teams, both large and small. I've built software for systems that handle a few hundred up to millions of hits each day, and manage hundreds of millions of pounds. But most of all, I've delivered working software to real people.</p>
 
-<h1><a class="anchor" href="#about-me" id="about-me" name=
-"about-me"><span class="octicon octicon-link"></span></a>ABOUT ME</h1>
+<h2>About me</h2>
 
-<p>
-I've worked in technology since I was 16, spending the last 10 years in engineering leadership.
-</p>
+<p>I've worked in technology since I was 16, spending the last 10 years in engineering leadership.</p>
 
-<p>Since 2023, I've worked for <a href="https://relaycommerce.io" target="_blank">Relay Commerce, Inc</a>, as their Head of Engineering, and now their CTO. Before that, I spent a few years as co-founder of TEAMS.gg, a gaming startup helping players to find the right teammates to play online games with.</p>
+<p>Since 2023, I've worked for <a href="https://relaycommerce.io" target="_blank" rel="noopener noreferrer">Relay Commerce, Inc</a> as their CTO. Before that, I spent a few years as co-founder of TEAMS.gg, a gaming startup helping players find the right teammates for online games.</p>
 
-<p>In my spare time, I enjoy scuba diving & volunteering with young people as a Scout Leader with the UK Scout Association.</p>
+<p>In my spare time, I enjoy scuba diving and volunteering with young people as a Scout Leader with the UK Scout Association.</p>
 
-<h1><a class="anchor" href="#writing" id="writing" name=
-"writing"><span class="octicon octicon-link"></span></a>WRITING</h1>
+<h2>Writing</h2>
 
 
-  <ul>
-      <li>
-        <a href="/writing/2021/07/19/estimating-large-scale-software-projects.html">Planning & estimating large-scale software projects</a> <span>Jul 19, 2021</span>
-        <!-- use article.summary(250) if you have Nokogiri available to show just
-            the first 250 characters -->
-        <div class="smaller emph preview"><p>This weekend I was talking with a friend about how I'd planned and estimated a
-<em>huge</em> software project in one of my previous jobs. By that I mean not something
+<ul class="not-prose mt-6 space-y-6">
+    <li>
+      <a href="/writing/2021/07/19/estimating-large-scale-software-projects.html" class="font-medium text-blue-600 dark:text-blue-400 hover:underline">Planning & estimating large-scale software projects</a>
+      <span class="ml-2 text-xs text-zinc-400">Jul 19, 2021</span>
+      <p class="mt-1 text-xs italic text-zinc-400 dark:text-zinc-500 leading-relaxed">
+        This weekend I was talking with a friend about how I'd planned and estimated a
+huge software project in one of my previous jobs. By that I mean not something
 which can be done by a single team in a sprint or two, but something which
-requires several teams, across several quarters of effort, involving...</p></div>
-      </li>
-  </ul>
+requires several teams, across several quarters of effort, involving...
+      </p>
+    </li>
+</ul>
 
-      </div>
+
+      </main>
+      <footer class="mt-12 pt-8 border-t border-zinc-200 dark:border-zinc-800 flex items-center justify-center">
+  <span class="text-xs text-zinc-400 dark:text-zinc-500">&copy; 2026 Tom Russell</span>
+</footer>
+
     </div>
   </body>
 </html>
